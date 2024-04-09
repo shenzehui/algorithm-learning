@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * N字形变换
+ * N字形变换（Z字形变换）
  * Created by szh on 2023-09-25
  *
  * @author szh
@@ -30,5 +30,36 @@ public class ZigzagConversion {
             i += flag;
         }
         return "0";
+    }
+
+    public String convert1(String s, int numRows) {
+        // 特殊情况处理
+        if (numRows == 1 || numRows >= s.length()) {
+            return s;
+        }
+
+        StringBuffer[] rows = new StringBuffer[numRows];
+        for (int i = 0; i < numRows; i++) {
+            rows[i] = new StringBuffer();
+        }
+
+        int curRow = 0;
+        // 先不向下
+        boolean down = false;
+
+        for (char c : s.toCharArray()) {
+            rows[curRow].append(c);
+
+            if (curRow == 0 || curRow == numRows - 1) {
+                down = !down;
+            }
+            curRow += down ? 1 : -1;
+        }
+
+        StringBuffer result = new StringBuffer();
+        for (StringBuffer row : rows) {
+            result.append(row);
+        }
+        return result.toString();
     }
 }

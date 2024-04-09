@@ -89,7 +89,7 @@ public class LongestPalSubstring {
         int n = s.length();
         boolean[][] array = new boolean[n][n];
 
-        int maxLength = 1;
+        int maxLength = 0;
         String res = "";
 
         for (int len = 0; len < n; len++) {
@@ -156,8 +156,8 @@ public class LongestPalSubstring {
 
 
     public static void main(String[] args) {
-        String s = "babad";
-        String s1 = new LongestPalSubstring().longestPalindrome4(s);
+        String s = "a";
+        String s1 = new LongestPalSubstring().longestPalindrome3(s);
         System.out.println(s1);
         // 1 1 2 3 5 8 13 21 34 55
 //        int res = new LongestPalSubstring().fib2(10);
